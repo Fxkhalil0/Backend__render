@@ -9,6 +9,7 @@ const client = new MongoClient(uri, {
     version: ServerApiVersion.v1,
     strict: true,
     deprecationErrors: true,
+    poolSize: 10
   },
   useNewUrlParser: true,
   useUnifiedTopology: true,
