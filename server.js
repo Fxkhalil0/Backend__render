@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: "https://lvw.onrender.com", // Allow requests only from this origin
-    methods: ["POST", "GET"],
+    methods: ["POST"],
     credentials: true,
   })
 );
