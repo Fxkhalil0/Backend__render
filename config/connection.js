@@ -13,8 +13,8 @@ const client = new MongoClient(uri, {
   },
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  connectTimeoutMS: 90000, 
-  socketTimeoutMS: 90000,
+  connectTimeoutMS: 90000000, 
+  socketTimeoutMS: 90000000,
 });
 
 async function run() {
