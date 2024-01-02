@@ -7,13 +7,13 @@ const cors = require("cors");
 const port = process.env.PORT || 5000
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors(
-  {
-      origin: "*",
-      methods: ["POST", "GET"],
-      credentials: true
-  }
-));
+app.use(cors({
+  origin: "*", 
+  methods: ["POST", "GET", "OPTIONS"], 
+  credentials: true,
+  optionsSuccessStatus: 204,
+}));
+
 app.use(bodyParser.json());
 app.get("/", function (req, res) {
   res.send("Welcome");
