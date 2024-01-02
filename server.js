@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: ["https://lvw.onrender.com", "https://backend-1rxt.onrender.com"], // Allow requests only from this origin
+    origin: "https://lvw.onrender.com", // Allow requests only from this origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
