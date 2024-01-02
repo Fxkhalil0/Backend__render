@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const client = require ("../config/connection")
 const userSchema = mongoose.Schema(
   {
     role: {
@@ -28,5 +29,5 @@ const userSchema = mongoose.Schema(
   }
 );
 
-const user = mongoose.model("user", userSchema);
+const user = client.model("user", userSchema);
 module.exports = user;
