@@ -53,7 +53,6 @@ const add = async (req,res)=>{
         res.status(400).json({message:"Phone is required"})
     }
     else{
-        
         try {
             const userData = await user.create({
                 role: role,
