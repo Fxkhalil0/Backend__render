@@ -53,22 +53,17 @@ const add = async (req,res)=>{
         res.status(400).json({message:"Phone is required"})
     }
     else{
-        try {
-            const userData = await user.create({
-                role: role,
-                firstName: firstName,
-                lastName: lastName,
-                email: email,
-                phone: phone
-            });
-            console.log(userData);
-            sendWelcomeEmail(userData);
-            res.status(200).json({ userData });
-        } catch (error) {
-            console.error("Error during user creation:", error);
-            res.status(500).json({ message: "Internal server error" });
-        }
         
+        const userData = await user.create({
+            role:role,
+            firstName:firstName,
+            lastName:lastName,
+            email:email,
+            phone:phone
+        })
+        console.log(userData)
+        sendWelcomeEmail(userData)
+        res.status(200).json({userData})
     }
 }
 
