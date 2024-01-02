@@ -10,8 +10,10 @@ const client = new MongoClient(uri, {
     strict: true,
     deprecationErrors: true,
   },
-  bufferCommands: false, 
-  bufferTimeoutMS: 0,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  connectTimeoutMS: 30000, 
+  socketTimeoutMS: 30000,
 });
 
 async function run() {
