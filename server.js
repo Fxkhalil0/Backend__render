@@ -7,7 +7,13 @@ const cors = require("cors");
 const port = process.env.PORT || 5000
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: "https://lvw.onrender.com", // Allow requests only from this origin
+    methods: ["POST", "GET"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 app.get("/", function (req, res) {
   res.send("Welcome");
