@@ -7,13 +7,14 @@ const app = express();
 const server = require("http").createServer(app);
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
+app.use(cors({
     origin: "https://lvw.onrender.com", // Allow requests only from this origin
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true,
   })
 );
+// Add this before your route handlers
+app.options("*", cors());
 app.use(bodyParser.json());
 
 // Connect to the MongoDB database
