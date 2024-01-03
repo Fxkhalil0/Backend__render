@@ -47,7 +47,7 @@ app.get("/", function (req, res) {
 });
 
 // CORS middleware for specific routes
-app.use("/user", cors({
+app.use(cors({
   origin: "https://lvw.onrender.com",
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
