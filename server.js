@@ -9,7 +9,7 @@ const { MongoClient } = require('mongodb');
 
 // Middleware to establish MongoDB connection
 app.use(async (req, res, next) => {
-  const client = new MongoClient("mongodb+srv://lvw:LVW123456789@cluster0.9bdwe65.mongodb.net/?retryWrites=true&w=majority&ssl=true", {
+  const client = new MongoClient(uri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   });
