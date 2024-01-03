@@ -1,6 +1,12 @@
-const user = require("../models/user");
-const nodemailer = require("nodemailer");
 
+const nodemailer = require("nodemailer");
+const express = require("express")
+const cors = require("cors");
+const { user } = require("../models/user");
+
+appregister = express()
+appregister.use(express.json())
+appregister.use(express())
 //nodemailer welcome message
 const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -36,35 +42,58 @@ async function sendWelcomeEmail(userData) {
         console.error("Error sending welcome email:", error);
     }
 }
+appregister.use(cors({ maxAge: 24 * 60 * 60 * 1000, origin: "https://lvw.onrender.com/", exposedHeaders: '*', credentials: true, preflightContinue: true }));
+
+appregister.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', 'https://testfrontend-eta.vercel.app');
+    res.header({ "Access-Control-Allow-Credentials": true });
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override,Content-Type, Accept');
+    res.header("Access-Control-Max-Age", 24 * 60 * 60 * 1000);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+    res.header("Set-Cookie", "sid=14A52; max-age=3600;samesite=None;sameSite=none ;SameSite=None ;Secure ")
+
+    next()
+})
 
 
-const add = async (req,res)=>{
-    const {role,firstName,lastName,email,phone} = req.body
-    if(!firstName){
-        res.status(400).json({message:"First Name is required"})
+
+appregister.post("/addnew", async (req, res, next) => {
+    console.log("sss")
+
+
+    const { role, firstName, lastName, email, phone } = req.body
+    if (!firstName) {
+        res.status(400).json({ message: "First Name is required" })
     }
-    else if(!lastName){
-        res.status(400).json({message:"Last Name is required"})
+    else if (!lastName) {
+        res.status(400).json({ message: "Last Name is required" })
     }
-    else if(!email){
-        res.status(400).json({message:"Email is required"})
+    else if (!email) {
+        res.status(400).json({ message: "Email is required" })
     }
-    else if(!phone){
-        res.status(400).json({message:"Phone is required"})
+    else if (!phone) {
+        res.status(400).json({ message: "Phone is required" })
     }
-    else{
-        
-        const userData = await user.create({
-            role:role,
-            firstName:firstName,
-            lastName:lastName,
-            email:email,
-            phone:phone
+    else {
+        const userData = new user({
+            role: role,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            phone: phone
         })
         console.log(userData)
-        sendWelcomeEmail(userData)
-        res.status(200).json()
+        const newuser = await userData.save()
+        sendWelcomeEmail(newuser)
+        res.send(newuser)
     }
+    next()
+
+
+}, async (req, res) => {
+
+
 }
 
-module.exports = { add };
+)
+module.exports.appregister = appregister;

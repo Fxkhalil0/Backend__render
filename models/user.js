@@ -1,6 +1,7 @@
+require('dotenv').config();
 const mongoose = require("mongoose");
-const client = require ("../config/connection")
-const userSchema = mongoose.Schema(
+mongoose.connect(process.env.MONGODB_URI)
+const userSchema = new mongoose.Schema(
   {
     role: {
       type: String,
@@ -30,4 +31,4 @@ const userSchema = mongoose.Schema(
 );
 
 const user = mongoose.model("user", userSchema);
-module.exports = user;
+module.exports.user=user
