@@ -7,8 +7,6 @@ const cors = require("cors");
 const { MongoClient } = require('mongodb');
 
 
-
-app.use(express.static('build'))
 // Middleware to establish MongoDB connection
 app.use(async (req, res, next) => {
   const client = new MongoClient("mongodb+srv://lvw:LVW123456789@cluster0.9bdwe65.mongodb.net/?retryWrites=true&w=majority&ssl=true", {
