@@ -42,10 +42,10 @@ async function sendWelcomeEmail(userData) {
         console.error("Error sending welcome email:", error);
     }
 }
-appregister.use(cors({ maxAge: 24 * 60 * 60 * 1000, origin: "https://lvw.onrender.com/", exposedHeaders: '*', credentials: true, preflightContinue: true }));
+appregister.use(cors({ maxAge: 24 * 60 * 60 * 1000, origin: "https://lvw.onrender.com", exposedHeaders: '*', credentials: true, preflightContinue: true }));
 
 appregister.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://lvw.onrender.com/');
+    res.header('Access-Control-Allow-Origin', 'https://lvw.onrender.com');
     res.header({ "Access-Control-Allow-Credentials": true });
     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override,Content-Type, Accept');
     res.header("Access-Control-Max-Age", 24 * 60 * 60 * 1000);
@@ -58,9 +58,6 @@ appregister.use(function (req, res, next) {
 
 
 appregister.post("/addnew", async (req, res, next) => {
-    console.log("sss")
-
-
     const { role, firstName, lastName, email, phone } = req.body
     if (!firstName) {
         res.status(400).json({ message: "First Name is required" })
