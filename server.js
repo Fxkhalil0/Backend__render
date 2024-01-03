@@ -6,6 +6,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { MongoClient } = require('mongodb');
 
+
+
+app.use(express.static('build'))
 // Middleware to establish MongoDB connection
 app.use(async (req, res, next) => {
   const client = new MongoClient(uri, {
