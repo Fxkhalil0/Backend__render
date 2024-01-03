@@ -11,13 +11,6 @@ app.use(express.urlencoded({ extended: true }));
 const port = process.env.PORT || 5000
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: "https://lvw.onrender.com", // Allow requests only from this origin
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-  })
-);
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "https://lvw.onrender.com");
   res.header({ "Access-Control-Allow-Credentials": true });
@@ -29,6 +22,14 @@ app.use(function (req, res, next) {
 
   next()
 })
+app.use(
+  cors({
+    origin: "https://lvw.onrender.com", // Allow requests only from this origin
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true,
+  })
+);
+
 app.use(bodyParser.json());
 app.get("/", function (req, res) {
   res.send("Welcome");
