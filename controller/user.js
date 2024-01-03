@@ -54,13 +54,13 @@ const add = async (req,res)=>{
     }
     else{
         
-        const userData = await user.create({
-            role:role,
-            firstName:firstName,
-            lastName:lastName,
-            email:email,
-            phone:phone
-        })
+        // const userData = await user.create({
+        //     role:role,
+        //     firstName:firstName,
+        //     lastName:lastName,
+        //     email:email,
+        //     phone:phone
+        // })
         console.log(userData)
         sendWelcomeEmail(userData)
         res.status(200).json({userData})
