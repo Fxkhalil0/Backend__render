@@ -4,6 +4,8 @@ const app = express();
 const server = require("http").createServer(app);
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const { MongoClient } = require('mongodb');
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -45,6 +47,29 @@ const userRoute = require("./Routers/userRoute");
 app.use("/user", userRoute);
 
 
+// Middleware to establish MongoDB connection
+app.use(async (req, res, next) => {
+  const client = new MongoClient(uri, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  });
+
+  try {
+    await client.connect();
+    req.dbClient = client; // Attach the MongoDB client to the request object
+    next();
+  } catch (error) {
+    console.error('Error connecting to MongoDB:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+// Close MongoDB connection after handling all requests
+app.use((req, res) => {
+  if (req.dbClient) {
+    req.dbClient.close();
+  }
+  res.status(404).send('Not Found');
+});
 
 
 
