@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'https://lvw.onrender.com');
+  res.header('Access-Control-Allow-Origin', 'https://www.lvw.live');
   res.header({ "Access-Control-Allow-Credentials": true });
   res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override,Content-Type, Accept');
   res.header("Access-Control-Max-Age", 24 * 60 * 60 * 1000);
@@ -23,7 +23,7 @@ app.use(function (req, res, next) {
   next()
 })
 
-app.use(cors({maxAge:24*60*60*1000,origin:"https://lvw.onrender.com" ,exposedHeaders:'*',credentials:true,preflightContinue: true}));
+app.use(cors({maxAge:24*60*60*1000,origin:"https://www.lvw.live" ,exposedHeaders:'*',credentials:true,preflightContinue: true}));
 
 app.use(bodyParser.json());
 app.get("/", function (req, res) {
