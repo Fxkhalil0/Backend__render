@@ -45,7 +45,7 @@ async function sendWelcomeEmail(userData) {
 appregister.use(cors({ maxAge: 24 * 60 * 60 * 1000, origin: "https://lvw.onrender.com/", exposedHeaders: '*', credentials: true, preflightContinue: true }));
 
 appregister.use(function (req, res, next) {
-    res.header('Access-Control-Allow-Origin', 'https://testfrontend-eta.vercel.app');
+    res.header('Access-Control-Allow-Origin', 'https://lvw.onrender.com/');
     res.header({ "Access-Control-Allow-Credentials": true });
     res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override,Content-Type, Accept');
     res.header("Access-Control-Max-Age", 24 * 60 * 60 * 1000);
