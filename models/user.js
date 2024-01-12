@@ -23,6 +23,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       require: true,
     },
+    birthDate: {
+      type: Date,
+      require: false,
+    },
   },
   {
     versionKey: false,
@@ -31,4 +35,4 @@ const userSchema = new mongoose.Schema(
 );
 
 const user = mongoose.model("user", userSchema);
-module.exports.user=user
+module.exports.user = user

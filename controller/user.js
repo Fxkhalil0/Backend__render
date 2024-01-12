@@ -20,7 +20,29 @@ const transporter = nodemailer.createTransport({
 });
 
 // Function to send a welcome email
-async function sendWelcomeEmail(userData) {
+async function sendUserWelcomeEmail(userData) {
+    try {
+        const info = await transporter.sendMail({
+            from: '"LVW Tours" <fatmakhalilba@gmail.com>',
+            to: userData.email,
+            subject: "Welcome to LVW Tours Community",
+            html: `
+            <h1>Hey ${userData?.firstName} ${userData?.lastName}, thanks for your interest!</h1>
+            <h3>We've added you to our little email list, which means you'll be among the first to know when the site officially launches. We understand your excitement about exploring virtual travel,<br>
+            so we'll be working pretty hard to get it into your hands soon.<br>
+            In the meantime, you can follow <b><u>@LVWtrip on Twitter</u></b>. Or even better, help us spread the word!</h3>
+            <h2>Sincerely,
+            <br>
+            LVW</h2>
+            `,
+        });
+
+        console.log("Welcome email sent to: %s", userData?.email);
+    } catch (error) {
+        console.error("Error sending welcome email:", error);
+    }
+}
+async function sendCareerWelcomeEmail(userData) {
     try {
         const info = await transporter.sendMail({
             from: '"LVW Tours" <fatmakhalilba@gmail.com>',
@@ -55,10 +77,8 @@ appregister.use(function (req, res, next) {
     next()
 })
 
-
-
 appregister.post("/addnew", async (req, res, next) => {
-    const { role, firstName, lastName, email, phone } = req.body
+    const { role, firstName, lastName, email, phone, birthDate } = req.body
     if (!firstName) {
         res.status(400).json({ message: "First Name is required" })
     }
@@ -71,17 +91,26 @@ appregister.post("/addnew", async (req, res, next) => {
     else if (!phone) {
         res.status(400).json({ message: "Phone is required" })
     }
+    else if (!birthDate && role == "user") {
+        res.status(400).json({ message: "Birth Date is required" })
+    }
     else {
         const userData = new user({
             role: role,
             firstName: firstName,
             lastName: lastName,
             email: email,
-            phone: phone
+            phone: phone,
+            birthDate: new Date(birthDate),
         })
         console.log(userData)
         const newuser = await userData.save()
-        sendWelcomeEmail(newuser)
+        if (newuser.role == "user") {
+            sendUserWelcomeEmail(newuser)
+        }
+        else {
+            sendCareerWelcomeEmail(newuser)
+        }
         res.send(newuser)
     }
     next()
