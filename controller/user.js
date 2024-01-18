@@ -27,10 +27,9 @@ async function sendUserWelcomeEmail(userData) {
             to: userData.email,
             subject: "Welcome to LVW Tours Community",
             html: `
-            <h1>Hey ${userData?.firstName} ${userData?.lastName}, thanks for your interest!</h1>
-            <h3>We've added you to our little email list, which means you'll be among the first to know when the site officially launches. We understand your excitement about exploring virtual travel,<br>
-            so we'll be working pretty hard to get it into your hands soon.<br>
-            In the meantime, you can follow <b><u>@LVWtrip on Twitter</u></b>. Or even better, help us spread the word!</h3>
+            <h1>Hey ${userData?.firstName} ${userData?.lastName}, Welcome to LVW Tours – your gateway to unforgettable live journeys!</h1>
+            <h3>We've received your information, and you'll be the first to know about our upcoming launch.<br>
+            Get ready for exclusive updates as we embark on this journey together.</h3>
             <h2>Sincerely,
             <br>
             LVW</h2>
@@ -47,7 +46,7 @@ async function sendCareerWelcomeEmail(userData) {
         const info = await transporter.sendMail({
             from: '"LVW Tours" <fatmakhalilba@gmail.com>',
             to: userData.email,
-            subject: "Welcome to LVW Tours Community",
+            subject: "Explore Your Career at LVW Tours",
             html: `
             <h1>Hey ${userData?.firstName} ${userData?.lastName}, thanks for your interest!</h1>
             <h3>We've added you to our little email list, which means you'll be among the first to know when the site officially launches. We understand your excitement about exploring virtual travel,<br>
