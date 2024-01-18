@@ -87,6 +87,9 @@ appregister.post("/addnew", async (req, res, next) => {
     else if (!email) {
         res.status(400).json({ message: "Email is required" })
     }
+    else if (!phone) {
+        res.status(400).json({ message: "Phone is required" })
+    }
     else if (!birthDate && role == "user") {
         res.status(400).json({ message: "Birth Date is required" })
     }
