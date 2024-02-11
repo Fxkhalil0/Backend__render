@@ -19,7 +19,7 @@ const fileStorage = multer.diskStorage({
     },
 });
 const upload = multer({ storage: fileStorage });
-const logoURL = './uploads/logo.png'
+const logoURL = '../uploads/logo.png'
 
 //nodemailer welcome message
 const transporter = nodemailer.createTransport({
@@ -92,20 +92,6 @@ async function sendUserWelcomeEmail(userData) {
         max-width: 100%;
         height: auto;
       }
-
-      /* figure>img:hover::after {
-            content: attr(alt);
-            background-color: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 8px 16px;
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 4px;
-            white-space: nowrap;
-            font-size: 14px;
-        } */
 
       .container > h1 {
         text-align: center;
@@ -247,7 +233,7 @@ async function sendUserWelcomeEmail(userData) {
     <div class="main">
       <div class="container">
         <figure>
-          <img src="./logo.png" alt="Live Virtual World" />
+          <img src="cid:logo" alt="Live Virtual World" />
         </figure>
         <h1>Welcome to the LVW Tours Community!</h1>
         <p>
@@ -372,7 +358,7 @@ appregister.post("/addnew", async (req, res, next) => {
             });
             console.log(userData);
             const newuser = await userData.save();
-            if (newuser.role == "user") {
+            if (newuser?.role === "user") {
                 sendUserWelcomeEmail(newuser);
             } else {
                 sendCareerWelcomeEmail(newuser);
