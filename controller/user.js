@@ -9,8 +9,8 @@ const { user } = require("../models/user");
 appregister = express()
 appregister.use(express.json())
 appregister.use(express())
-appregister.use(express.static(path.join(__dirname, "../uploads")));
-appregister.use(express.static("../uploads"));
+appregister.use(express.static(path.join(__dirname, "./uploads")));
+appregister.use(express.static("./uploads"));
 const fileStorage = multer.diskStorage({
     destination: (req, file, callbackfun) => {
         callbackfun(null, "./uploads");
@@ -20,7 +20,7 @@ const fileStorage = multer.diskStorage({
     },
 });
 const upload = multer({ storage: fileStorage });
-const logoURL = '../uploads/logo.png'
+const logoURL = './uploads/logo.png'
 
 //nodemailer welcome message
 const transporter = nodemailer.createTransport({
