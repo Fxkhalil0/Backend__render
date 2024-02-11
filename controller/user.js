@@ -230,7 +230,7 @@ async function sendUserWelcomeEmail(userData) {
     </style>
   </head>
 
-  <body>
+  <body style="background-color: #12243a;">
     <div class="main">
       <div class="container">
         <figure>
