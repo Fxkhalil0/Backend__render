@@ -3,13 +3,14 @@ const nodemailer = require("nodemailer");
 const express = require("express")
 const cors = require("cors");
 const multer = require("multer");
+const path = require('path');
 const { user } = require("../models/user");
 
 appregister = express()
 appregister.use(express.json())
 appregister.use(express())
-appregister.use(express.static(path.join(__dirname, "./uploads")));
-appregister.use(express.static("./uploads"));
+appregister.use(express.static(path.join(__dirname, "../uploads")));
+appregister.use(express.static("../uploads"));
 const fileStorage = multer.diskStorage({
     destination: (req, file, callbackfun) => {
         callbackfun(null, "./uploads");
