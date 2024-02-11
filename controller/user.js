@@ -83,13 +83,13 @@ async function sendUserWelcomeEmail(userData) {
         margin: 0 auto;
       }
 
-      figure {
+      .figure {
         display: flex;
         justify-content: center;
         padding: 60px 0;
       }
 
-      figure > img {
+      .figure > img {
         max-width: 100%;
         height: auto;
       }
@@ -107,12 +107,12 @@ async function sendUserWelcomeEmail(userData) {
         font-size: 25px;
       }
 
-      .container > p:first-of-type {
+      .first__of__type {
         margin-top: 50px;
         margin-bottom: 30px;
       }
 
-      .container > p:last-of-type {
+      .last__of__type {
         margin-bottom: 50px;
       }
 
@@ -151,7 +151,7 @@ async function sendUserWelcomeEmail(userData) {
         cursor: pointer;
       }
 
-      .right__side i:first-of-type {
+      .mailto {
         margin-right: 10px;
       }
 
@@ -233,14 +233,14 @@ async function sendUserWelcomeEmail(userData) {
   <body style="background-color: #12243a;">
     <div class="main">
       <div class="container">
-        <figure>
+        <figure class="figure">
           <img src="cid:logo" alt="Live Virtual World" />
         </figure>
         <h1>Welcome to the LVW Tours Community!</h1>
-        <p>
+        <p class="first__of__type">
           Welcome to LVW Tours – your gateway to unforgettable live journeys!
         </p>
-        <p>
+        <p class="last__of__type">
           We've received your information, and you'll be the first to know about
           our upcoming launch. Get ready for exclusive updates as we embark on
           this journey together.
@@ -277,7 +277,7 @@ async function sendUserWelcomeEmail(userData) {
             ></a>
           </div>
           <div class="right__side">
-            <a href="mailto:Info@lvw.live"
+            <a class="mailto" href="mailto:Info@lvw.live"
               ><i class="fa-regular fa-envelope"></i
             ></a>
             <a href="https://www.lvw.live/" target="_blank"
