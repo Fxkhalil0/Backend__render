@@ -232,7 +232,7 @@ async function sendUserWelcomeEmail(userData) {
             <body style="background-color: #12243a; height: 100vh; font-family: 'Lato', sans-serif;">
               <div class="main">
                 <div class="container" style="width: 85%; margin: 0 auto;">
-                  <div style="display: flex; justify-content: center; padding: 60px 0;">
+                  <div style="width: 10%; display: flex; justify-content: center; padding: 60px 0;">
                     <img style="max-width: 100%; height: auto;" src="cid:logo" alt="Live Virtual World" />
                   </div>
                   <h1 style="text-align: center; font-size: 40px; font-weight: 600; color: #ffffff;">Welcome to the LVW Tours Community!</h1>
