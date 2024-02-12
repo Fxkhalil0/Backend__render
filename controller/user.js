@@ -232,7 +232,7 @@ async function sendUserWelcomeEmail(userData) {
             <body style="background-color: #12243a; height: 100vh; font-family: 'Lato', sans-serif;">
               <div class="main">
                 <div class="container" style="width: 85%; margin: 0 auto;">
-                  <div style="width: 10%; display: flex; justify-content: center; padding: 60px 0;">
+                  <div style="width: 100%; display: flex; justify-content: center; align-items: cenet; text-align: center; padding: 60px 0;">
                     <img style="max-width: 100%; height: auto;" src="cid:logo" alt="Live Virtual World" />
                   </div>
                   <h1 style="text-align: center; font-size: 40px; font-weight: 600; color: #ffffff;">Welcome to the LVW Tours Community!</h1>
@@ -253,7 +253,7 @@ async function sendUserWelcomeEmail(userData) {
               <footer style="margin-top: 52px; background-color: #ff2629; padding: 75px 0; position: absolute; bottom: 0; width: 100%;">
                 <div class="container" style="width: 85%; margin: 0 auto;">
                   <div style="display:flex; justify-content:space-between; align-items:center;">
-                    <div class="left__side" style="width: 50%; display:flex; align-items:center;">
+                    <div class="left__side" style="width: 80%; display:flex; align-items:center;">
                       <a href="https://www.facebook.com/story.php?story_fbid=406443851756849&substory_index=898726195041079&id=100071737136498"
                         target="_blank"><img class="facebook" style="width: 40px;" src="cid:face" /></a>
                       <a href="https://www.instagram.com/live_virtual_world?igsh=MzRlODBiNWFlZA==" target="_blank"><img
@@ -263,7 +263,7 @@ async function sendUserWelcomeEmail(userData) {
                       <a href="https://www.youtube.com/@livevirtualworld7827?si=EnL3pBzNfYYrxW8W" target="_blank"><img
                           class="youtube" style="width: 30px; margin-top: 8px;" src="cid:you" /></a>
                     </div>
-                    <div class="right__side" style="width: 50%; display:flex; align-items:center;">
+                    <div class="right__side" style="width: 20%; display:flex; align-items:center; justify-content: center;">
                       <a style="border: 1px solid #ffffff; border-radius: 50%; margin-right: 10px;" href="mailto:Info@lvw.live"><img
                           class="email" style="width: 55px; padding: 10px; margin-top: 2px;" src="cid:email" /></a>
                       <a style="border: 1px solid #ffffff; border-radius: 50%;" href="https://www.lvw.live/" target="_blank"><img
