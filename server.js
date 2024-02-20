@@ -8,6 +8,7 @@ const { MongoClient } = require('mongodb');
 const {appregister} = require("./controller/user")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('uploads'))
 app.use(appregister)
 const port = process.env.PORT || 5000
 
