@@ -31,13 +31,13 @@ const webURL = './uploads/web.png'
 
 //nodemailer welcome message
 const transporter = nodemailer.createTransport({
-    service: "gmail",
-    host: "smtp.gmail.com",
-    port: 465,
+    service: "smtp-mail.outlook.com",
+    host: "outlook.office365.com",
+    port: 993,
     secure: true,
     auth: {
-        user: "fatmakhalilba@gmail.com",
-        pass: "hwnaxnvdgdebkrba",
+        user: "info@lvw.live",
+        pass: "7//veDqKEKM?t32",
     },
 });
 
