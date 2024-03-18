@@ -51,7 +51,7 @@ async function sendUserWelcomeEmail(userData) {
           to: userData.email,
           from: {
             name: 'LVW Tours',
-            email: 'livevirtualworld@gmail.com',
+            email: 'fatmakhalilba@gmail.com',
           },
           templateId: 'd-f46332102706424fac66856bdebc2a30',
         };
