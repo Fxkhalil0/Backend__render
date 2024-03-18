@@ -43,70 +43,85 @@ const transporter = nodemailer.createTransport({
 
 // Function to send a welcome email
 async function sendUserWelcomeEmail(userData) {
-  try {
-      fs.readFile(path.join(__dirname, "../index.html"), { encoding: "utf-8" }, function (err, html) {
-          if (err) {
-              console.error("Error reading HTML file:", err);
-              return;
-          }
+    try {
+        const msg = {
+          to: userData.email,
+          from: {
+            name: 'LVW Tours',
+            email: 'livevirtualworld@gmail.com',
+          },
+          templateId: 'd-f46332102706424fac66856bdebc2a30',
+        };
+    
+        await sgMail.send(msg);
+        console.log('Email sent');
+      } catch (error) {
+        console.error('Error sending welcome email:', error);
+      }
+//   try {
+//       fs.readFile(path.join(__dirname, "../index.html"), { encoding: "utf-8" }, function (err, html) {
+//           if (err) {
+//               console.error("Error reading HTML file:", err);
+//               return;
+//           }
 
-          // Create mail options
-          const mailOptions = {
-            from: '"LVW Tours" <fatmakhalilba@gmail.com>',
-            to: userData.email,
-            subject: "Welcome to LVW Tours Community",
-            attachments: [
-                {
-                filename: 'logo.png',
-                path: logoURL,
-                cid: 'logo'
-            },
-                {
-                filename: 'facebook.png',
-                path: facebookURL,
-                cid: 'face'
-            },
-                {
-                filename: 'instagram.png',
-                path: instagramURL,
-                cid: 'insta'
-            },
-                {
-                filename: 'linked.png',
-                path: linkedinURL,
-                cid: 'link'
-            },
-                {
-                filename: 'youtube.png',
-                path: youtubeURL,
-                cid: 'you'
-            },
-                {
-                filename: 'email.png',
-                path: emailURL,
-                cid: 'email'
-            },
-                {
-                filename: 'web.png',
-                path: webURL,
-                cid: 'web'
-            },
-        ],
-            html: html, // Use the HTML content read from index.html
-          };
+//           // Create mail options
+//           const mailOptions = {
+//             from: '"LVW Tours" <fatmakhalilba@gmail.com>',
+//             to: userData.email,
+//             subject: "Welcome to LVW Tours Community",
+//             attachments: [
+//                 {
+//                 filename: 'logo.png',
+//                 path: logoURL,
+//                 cid: 'logo'
+//             },
+//                 {
+//                 filename: 'facebook.png',
+//                 path: facebookURL,
+//                 cid: 'face'
+//             },
+//                 {
+//                 filename: 'instagram.png',
+//                 path: instagramURL,
+//                 cid: 'insta'
+//             },
+//                 {
+//                 filename: 'linked.png',
+//                 path: linkedinURL,
+//                 cid: 'link'
+//             },
+//                 {
+//                 filename: 'youtube.png',
+//                 path: youtubeURL,
+//                 cid: 'you'
+//             },
+//                 {
+//                 filename: 'email.png',
+//                 path: emailURL,
+//                 cid: 'email'
+//             },
+//                 {
+//                 filename: 'web.png',
+//                 path: webURL,
+//                 cid: 'web'
+//             },
+//         ],
+//             html: html, // Use the HTML content read from index.html
+//           };
 
-          // Send the email
-          transporter.sendMail(mailOptions, function (error, info) {
-              if (error) {
-                  console.error("Error sending email:", error);
-              } else {
-                  console.log("Email sent: " + info.response);
-              }
-          });
-      });
-  } catch (error) {
-      console.error("Error sending welcome email:", error);
-  }
+//           // Send the email
+//           transporter.sendMail(mailOptions, function (error, info) {
+//               if (error) {
+//                   console.error("Error sending email:", error);
+//               } else {
+//                   console.log("Email sent: " + info.response);
+//               }
+//           });
+//       });
+//   } catch (error) {
+//       console.error("Error sending welcome email:", error);
+//   }
 }
 async function sendCareerWelcomeEmail(userData) {
     try {
