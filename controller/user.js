@@ -6,6 +6,8 @@ const multer = require("multer");
 const path = require('path');
 const fs = require('fs');
 const { user } = require("../models/user");
+const sgMail = require('@sendgrid/mail')
+
 
 appregister = express()
 appregister.use(express.json())
