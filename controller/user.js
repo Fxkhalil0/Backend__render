@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const { user } = require("../models/user");
 const sgMail = require('@sendgrid/mail')
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 
 appregister = express()
