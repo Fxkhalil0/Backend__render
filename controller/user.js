@@ -59,7 +59,7 @@ async function sendUserWelcomeEmail(userData) {
         await sgMail.send(msg);
         console.log('Email sent');
       } catch (error) {
-        console.error('Error sending welcome email:', error);
+        console.error('Error sending welcome email:', error.response?.body || error);
       }
 //   try {
 //       fs.readFile(path.join(__dirname, "../index.html"), { encoding: "utf-8" }, function (err, html) {
